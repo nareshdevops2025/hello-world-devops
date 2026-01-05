@@ -1,6 +1,11 @@
 pipeline {
   agent any
 
+  tools {
+        maven 'maven-3'
+        jdk 'JDK'
+    }
+
   environment {
     IMAGE_NAME = "hello-world"
     REGISTRY = "localhost:5000"
