@@ -1,6 +1,6 @@
 package com.example.hello;
 @SpringBootTest
-class HelloControllerTest {
+public class HelloControllerTest {
 
     @Test
     void contextLoads() {
