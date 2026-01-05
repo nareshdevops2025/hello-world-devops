@@ -22,7 +22,7 @@ pipeline {
 
     stage('Unit Tests') {
       steps {
-        sh 'mvn test'
+       sh 'cd app && mvn clean package'
       }
     }
 
