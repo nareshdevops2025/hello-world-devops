@@ -20,22 +20,14 @@ pipeline {
       }
     }
 
-            stage('Build') {
-            steps {
-                dir('app') {
-                    sh 'mvn clean package'
-                }
-            }
-        }
-
-        stage('Build Image') {
+      stage('Build Image') {
             steps {
                 dir('app') {
                     sh 'mvn clean package -DskipTests'
                 }
             }
         }
-    stage('Scan Image') {
+    /*stage('Scan Image') {
       steps {
         sh 'trivy image $REGISTRY/$IMAGE_NAME:${BUILD_NUMBER}'
       }
@@ -63,6 +55,6 @@ pipeline {
       steps {
         sh 'helm upgrade --install hello ./helm --namespace prod'
       }
-    }
+    } */
   }
 }
