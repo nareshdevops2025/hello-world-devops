@@ -1,4 +1,4 @@
-package com.example.hello
+package com.example.hello;
 @RestController
 public class HelloController {
 
