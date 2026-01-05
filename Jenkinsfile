@@ -20,21 +20,22 @@ pipeline {
       }
     }
 
-    stage('Unit Tests') {
-      steps {
-       sh 'cd app && mvn clean package'
-      }
-    }
+    stages {
+        stage('Build') {
+            steps {
+                dir('app') {
+                    sh 'mvn clean package'
+                }
+            }
+        }
 
-    stage('Build Image') {
-      steps {
-        sh '''
-        mvn clean package -DskipTests
-        docker build -t $REGISTRY/$IMAGE_NAME:${BUILD_NUMBER} .
-        '''
-      }
-    }
-
+        stage('Build Image') {
+            steps {
+                dir('app') {
+                    sh 'mvn clean package -DskipTests'
+                }
+            }
+        }
     stage('Scan Image') {
       steps {
         sh 'trivy image $REGISTRY/$IMAGE_NAME:${BUILD_NUMBER}'
