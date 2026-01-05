@@ -27,6 +27,14 @@ pipeline {
                 }
             }
         }
+
+     stage('SonarQube') {
+      steps {
+         dir('app') {
+                   sh 'mvn sonar:sonar'
+                }
+      }
+    }
     /*stage('Scan Image') {
       steps {
         sh 'trivy image $REGISTRY/$IMAGE_NAME:${BUILD_NUMBER}'
