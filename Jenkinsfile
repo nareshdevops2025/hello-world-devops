@@ -31,7 +31,9 @@ pipeline {
      stage('SonarQube') {
       steps {
          dir('app') {
-                   sh 'mvn sonar:sonar'
+           withSonarQubeEnv('sonarqube') {
+          sh 'mvn sonar:sonar -Dsonar.projectKey=helloword-devops'
+}
                 }
       }
     }
