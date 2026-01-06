@@ -9,6 +9,7 @@ pipeline {
   environment {
     IMAGE_NAME = "hello-world"
     REGISTRY = "localhost:5000"
+    SONAR_HOST_URL = 'http://localhost:9000'
   }
 
   stages {
