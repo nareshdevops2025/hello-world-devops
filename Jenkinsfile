@@ -32,8 +32,8 @@ pipeline {
       steps {
          dir('app') {
            withSonarQubeEnv('sonarqube') {
-          sh 'mvn sonar:sonar -Dsonar.projectKey=helloword-devops'
-}
+             sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=helloword-devops -Dsonar.host.url=http://localhost:9000 -Dsonar.login=sqp_2518aa810088c1d42a1a9ebb83612e6f111f0be1'
+         }
                 }
       }
     }
